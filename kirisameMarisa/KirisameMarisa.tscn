@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=126 format=2]
 
 [ext_resource path="res://characters/stickman/sprites/stickman30.png" type="Texture" id=1]
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=2]
@@ -82,11 +82,23 @@
 [ext_resource path="res://characters/stickman/sprites/chuk_spin5.png" type="Texture" id=80]
 [ext_resource path="res://characters/stickman/sprites/wall_slam.png" type="Texture" id=81]
 [ext_resource path="res://TouhouMod/characters/kirisameMarisa/sfx/burst/graze.wav" type="AudioStream" id=82]
+[ext_resource path="res://characters/states/Burst.gd" type="Script" id=83]
+[ext_resource path="res://sound/common/burst.wav" type="AudioStream" id=84]
+[ext_resource path="res://mechanics/Hitbox.gd" type="Script" id=85]
+[ext_resource path="res://TouhouMod/characters/kirisameMarisa/sprites/states/masterSpark/KirisameMarisa-MasterSparkt.png" type="Texture" id=86]
+[ext_resource path="res://map.png" type="Texture" id=87]
+[ext_resource path="res://TouhouMod/characters/kirisameMarisa/sfx/masterSpark/master_spark.wav" type="AudioStream" id=88]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
+shader_param/use_extra_color_1 = false
+shader_param/use_extra_color_2 = false
+shader_param/extra_replace_color_1 = Color( 1, 0, 1, 1 )
+shader_param/extra_replace_color_2 = Color( 1, 0, 1, 1 )
 shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/extra_color_1 = Color( 1, 1, 1, 1 )
+shader_param/extra_color_2 = Color( 1, 1, 1, 1 )
 shader_param/max_color_distance = 0.01
 shader_param/super_dim = false
 shader_param/use_outline = false
@@ -95,7 +107,13 @@ shader_param/outline_color = Color( 0, 0, 0, 1 )
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
+shader_param/use_extra_color_1 = false
+shader_param/use_extra_color_2 = false
+shader_param/extra_replace_color_1 = Color( 1, 0, 1, 1 )
+shader_param/extra_replace_color_2 = Color( 1, 0, 1, 1 )
 shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/extra_color_1 = Color( 1, 1, 1, 1 )
+shader_param/extra_color_2 = Color( 1, 1, 1, 1 )
 shader_param/max_color_distance = 0.01
 shader_param/super_dim = false
 shader_param/use_outline = false
@@ -136,6 +154,106 @@ region = Rect2( 1024, 0, 128, 128 )
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 31 )
 region = Rect2( 1152, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 86 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 86 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 86 )
+region = Rect2( 256, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 86 )
+region = Rect2( 384, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 86 )
+region = Rect2( 512, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 86 )
+region = Rect2( 640, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 86 )
+region = Rect2( 768, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 86 )
+region = Rect2( 896, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 86 )
+region = Rect2( 1024, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 86 )
+region = Rect2( 1152, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 86 )
+region = Rect2( 1280, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 86 )
+region = Rect2( 1408, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 86 )
+region = Rect2( 1536, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 86 )
+region = Rect2( 1664, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 86 )
+region = Rect2( 1792, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 86 )
+region = Rect2( 1920, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 86 )
+region = Rect2( 2048, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 86 )
+region = Rect2( 2176, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 86 )
+region = Rect2( 2304, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 86 )
+region = Rect2( 2432, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 86 )
+region = Rect2( 2560, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 86 )
+region = Rect2( 2688, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 86 )
+region = Rect2( 2816, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 86 )
+region = Rect2( 2944, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 86 )
+region = Rect2( 3072, 0, 128, 128 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -274,9 +392,9 @@ animations = [ {
 "name": "Landing",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
 "loop": true,
-"name": "New Anim",
+"name": "MasterSpark",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 59 ), ExtResource( 59 ), ExtResource( 58 ), ExtResource( 58 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 59 ), ExtResource( 59 ), ExtResource( 46 ) ],
@@ -352,7 +470,11 @@ character_portrait = ExtResource( 45 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 2 )
 frames = SubResource( 3 )
-animation = "Wait"
+animation = "Burst"
+frame = 5
+
+[node name="MasterSpark" type="AudioStreamPlayer2D" parent="Sounds" index="17"]
+stream = ExtResource( 88 )
 
 [node name="CollisionBox" parent="." index="2"]
 x = -2
@@ -364,8 +486,41 @@ height = 17
 x = -2
 width = 12
 
-[node name="Burst" parent="StateMachine" index="9"]
-ticks_per_frame = 3
-
 [node name="Hitbox" parent="StateMachine/Burst" index="0"]
 hit_sound = ExtResource( 82 )
+knockback = "20.0"
+send_away_from_center = true
+
+[node name="MasterSpark" type="Node2D" parent="StateMachine" index="47"]
+script = ExtResource( 83 )
+__meta__ = {
+"_editor_description_": ""
+}
+apply_forces = true
+apply_grav = true
+title = "Master Spark"
+type = 1
+button_texture = ExtResource( 87 )
+
+[node name="Hitbox" type="Node2D" parent="StateMachine/MasterSpark" index="0"]
+z_index = 1000
+script = ExtResource( 85 )
+x = 120
+y = -19
+width = 120
+height = 38
+hitbox_type = 4
+hitstun_ticks = 23
+victim_hitlag = 4
+hits_otg = true
+can_counter_hit = false
+sdi_modifier = "0.0"
+ignore_armor = true
+screenshake_amount = 2
+whiff_sound = ExtResource( 84 )
+hit_sound = ExtResource( 82 )
+dir_y = "-0.25"
+knockback = "14.0"
+launch_reversible = true
+start_tick = 2
+active_ticks = 1
