@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=2]
+[gd_scene load_steps=127 format=2]
 
 [ext_resource path="res://characters/stickman/sprites/stickman30.png" type="Texture" id=1]
 [ext_resource path="res://characters/BaseChar.tscn" type="PackedScene" id=2]
@@ -82,12 +82,13 @@
 [ext_resource path="res://characters/stickman/sprites/chuk_spin5.png" type="Texture" id=80]
 [ext_resource path="res://characters/stickman/sprites/wall_slam.png" type="Texture" id=81]
 [ext_resource path="res://TouhouMod/characters/kirisameMarisa/sfx/burst/graze.wav" type="AudioStream" id=82]
-[ext_resource path="res://characters/states/Burst.gd" type="Script" id=83]
+[ext_resource path="res://TouhouMod/characters/kirisameMarisa/states/masterSpark/MasterSpark.gd" type="Script" id=83]
 [ext_resource path="res://sound/common/burst.wav" type="AudioStream" id=84]
 [ext_resource path="res://mechanics/Hitbox.gd" type="Script" id=85]
 [ext_resource path="res://TouhouMod/characters/kirisameMarisa/sprites/states/masterSpark/KirisameMarisa-MasterSparkt.png" type="Texture" id=86]
-[ext_resource path="res://map.png" type="Texture" id=87]
+[ext_resource path="res://palette.png" type="Texture" id=87]
 [ext_resource path="res://TouhouMod/characters/kirisameMarisa/sfx/masterSpark/master_spark.wav" type="AudioStream" id=88]
+[ext_resource path="res://framework/VariableSound2D.gd" type="Script" id=89]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -470,11 +471,12 @@ character_portrait = ExtResource( 45 )
 [node name="Sprite" parent="Flip" index="0"]
 material = SubResource( 2 )
 frames = SubResource( 3 )
-animation = "Burst"
-frame = 5
+animation = "MasterSpark"
 
-[node name="MasterSpark" type="AudioStreamPlayer2D" parent="Sounds" index="17"]
+[node name="MSLaser" type="AudioStreamPlayer2D" parent="Sounds" index="17"]
 stream = ExtResource( 88 )
+volume_db = -12.636
+script = ExtResource( 89 )
 
 [node name="CollisionBox" parent="." index="2"]
 x = -2
@@ -491,36 +493,52 @@ hit_sound = ExtResource( 82 )
 knockback = "20.0"
 send_away_from_center = true
 
-[node name="MasterSpark" type="Node2D" parent="StateMachine" index="47"]
+[node name="MasterSpark" type="Node2D" parent="StateMachine" index="54"]
 script = ExtResource( 83 )
-__meta__ = {
-"_editor_description_": ""
-}
 apply_forces = true
-apply_grav = true
+apply_fric = true
+sprite_animation = "MasterSpark"
+anim_length = 75
+ticks_per_frame = 3
 title = "Master Spark"
 type = 1
 button_texture = ExtResource( 87 )
+flip_icon = false
+air_type = 2
+self_hit_cancellable = false
+self_interruptable = false
+interrupt_from_string = "Grounded
+Aerial
+GroundedAttack
+AerialAttack"
+interrupt_into_string = "Grounded
+Aerial"
+hit_cancel_into_string = "Grounded
+Aerial"
 
 [node name="Hitbox" type="Node2D" parent="StateMachine/MasterSpark" index="0"]
 z_index = 1000
 script = ExtResource( 85 )
-x = 120
-y = -19
-width = 120
-height = 38
-hitbox_type = 4
+x = 191
+y = -15
+width = 176
+height = 53
+damage = 300
 hitstun_ticks = 23
-victim_hitlag = 4
+victim_hitlag = 10
+cancellable = false
 hits_otg = true
 can_counter_hit = false
 sdi_modifier = "0.0"
 ignore_armor = true
-screenshake_amount = 2
+can_clash = false
+screenshake_amount = 10
 whiff_sound = ExtResource( 84 )
 hit_sound = ExtResource( 82 )
+dir_x = "1"
 dir_y = "-0.25"
-knockback = "14.0"
+knockback = "1.0"
 launch_reversible = true
+send_away_from_center = true
 start_tick = 2
-active_ticks = 1
+active_ticks = 23
